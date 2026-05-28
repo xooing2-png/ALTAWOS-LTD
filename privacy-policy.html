@@ -10,259 +10,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .privacy-page {
-            padding: 120px 0 60px;
-            min-height: 100vh;
+        .privacy-page { padding: 120px 0 60px; min-height: 100vh; }
+        .privacy-document { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .privacy-header { text-align: center; margin-bottom: 50px; padding-bottom: 30px; border-bottom: 2px solid var(--primary-color); }
+        .privacy-header h1 { font-size: 36px; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 15px; }
+        .privacy-header .meta { color: var(--text-muted); font-size: 14px; }
+        .toc { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; margin-bottom: 40px; }
+        .toc h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+        .toc-list { list-style: none; padding: 0; margin: 0; }
+        .toc-list li { margin-bottom: 10px; }
+        .toc-list a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 10px; }
+        .toc-list a:hover { color: var(--primary-color); }
+        .toc-list a span { color: var(--primary-color); font-weight: 600; min-width: 30px; }
+        .policy-section { margin-bottom: 50px; }
+        .policy-section h2 { font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); }
+        .policy-section p { line-height: 1.8; margin-bottom: 15px; color: var(--text-secondary); }
+        .policy-section ul, .policy-section ol { margin-bottom: 20px; padding-left: 25px; }
+        .policy-section li { margin-bottom: 10px; line-height: 1.7; color: var(--text-secondary); }
+        .highlight-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin: 20px 0; }
+        .highlight-box p { margin-bottom: 10px; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background: var(--card-bg); font-weight: 600; }
+        tr:hover { background: rgba(233, 69, 96, 0.05); }
+        @media (max-width: 768px) {
+            .privacy-page { padding: 100px 0 40px; }
+            .privacy-header h1 { font-size: 28px; }
+            .policy-section h2 { font-size: 20px; }
+            table { font-size: 14px; }
+            th, td { padding: 10px; }
         }
-        .privacy-document {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 2px solid var(--primary-color);
-        }
-        .privacy-header h1 {
-            font-size: 36px;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-        .privacy-header .meta {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-        .toc {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        .toc h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        .toc ol {
-            counter-reset: toc-counter;
-            list-style: none;
-            padding: 0;
-        }
-        .toc li {
-            counter-increment: toc-counter;
-            margin-bottom: 12px;
-            padding-right: 35px;
-            position: relative;
-        }
-        body.lang-en .toc li {
-            padding-right: 0;
-            padding-left: 35px;
-        }
-        .toc li::before {
-            content: counter(toc-counter);
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        body.lang-en .toc li::before {
-            right: auto;
-            left: 0;
-        }
-        .toc a {
-            color: var(--text-color);
-            transition: var(--transition);
-        }
-        .toc a:hover {
-            color: var(--primary-color);
-        }
-        .policy-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 25px;
-        }
-        .policy-section:hover {
-            border-color: rgba(233, 69, 96, 0.3);
-        }
-        .policy-section h2 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .policy-section p {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.9;
-            margin-bottom: 15px;
-        }
-        .policy-section ul, .policy-section ol {
-            margin: 15px 0;
-            padding-right: 0;
-        }
-        body.lang-en .policy-section ul,
-        body.lang-en .policy-section ol {
-            padding-right: 0;
-            padding-left: 25px;
-        }
-        .policy-section li {
-            position: relative;
-            padding-right: 25px;
-            margin-bottom: 10px;
-            font-size: 15px;
-            color: var(--text-color);
-            line-height: 1.7;
-        }
-        body.lang-en .policy-section li {
-            padding-right: 0;
-            padding-left: 25px;
-        }
-        .policy-section li::before {
-            content: '•';
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        body.lang-en .policy-section li::before {
-            right: auto;
-            left: 0;
-        }
-        .permission-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .permission-card h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .permission-card h4 .icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .permission-card h4 .icon svg {
-            width: 18px;
-height: 18px;
-            stroke: #fff;
-        }
-        .permission-card .detail {
-            margin-bottom: 12px;
-        }
-        .permission-card .detail strong {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(15, 52, 96, 0.1));
-            border: 1px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        .highlight-box h4 {
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .data-table th, .data-table td {
-            padding: 12px 15px;
-            text-align: right;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 14px;
-        }
-        body.lang-en .data-table th, 
-        body.lang-en .data-table td {
-            text-align: left;
-        }
-        .data-table th {
-            background: rgba(233, 69, 96, 0.1);
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        .data-table td {
-            color: var(--text-color);
-        }
-        .data-table tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-        }
-        .version-info {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        .version-info .item {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-        .version-info .label {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .version-info .value {
-            font-size: 16px;
-            font-weight: 600;
-            color: #fff;
-        }
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 30px;
-            transition: var(--transition);
-        }
-        .back-link:hover {
-            gap: 12px;
-        }
+        [dir="rtl"] .toc-list { padding-right: 0; padding-left: 25px; }
+        [dir="rtl"] table { text-align: right; }
+        [dir="rtl"] th, [dir="rtl"] td { text-align: right; }
     </style>
 </head>
 <body>
@@ -282,429 +63,230 @@ height: 18px;
                 </div>
             </div>
             <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
+                    <li><a href="index.html#about" data-en="About" data-ar="عن الشركة">عن الشركة</a></li>
+                    <li><a href="index.html#services" data-en="Services" data-ar="خدماتنا">خدماتنا</a></li>
+                    <li><a href="index.html#projects" data-en="Projects" data-ar="مشاريعنا">مشاريعنا</a></li>
+                    <li><a href="privacy-policy.html" class="active" data-en="Privacy" data-ar="سياسة الخصوصية">سياسة الخصوصية</a></li>
+                    <li><a href="index.html#terms" data-en="Terms" data-ar="شروط الاستخدام">شروط الاستخدام</a></li>
+                    <li><a href="index.html#contact" data-en="Contact" data-ar="تواصل معنا">تواصل معنا</a></li>
+                </ul>
                 <div class="language-toggle">
                     <button class="lang-btn active" data-lang="ar">عربي</button>
                     <span class="divider">|</span>
                     <button class="lang-btn" data-lang="en">EN</button>
                 </div>
+                <button class="menu-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
         </div>
     </header>
 
+<!-- Privacy Policy Content -->
     <main class="privacy-page">
         <div class="privacy-document">
-            <a href="index.html" class="back-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="19" y1="12" x2="5" y2="12"/>
-                    <polyline points="12 19 5 12 12 5"/>
-                </svg>
-                <span data-en="Back to Home" data-ar="العودة للرئيسية">العودة للرئيسية</span>
-            </a>
-
             <div class="privacy-header">
                 <h1 data-en="Privacy Policy" data-ar="سياسة الخصوصية">سياسة الخصوصية</h1>
-                <p class="meta">
-                    <span data-en="Company: ALTAWOS LTD | Company No: 17238920" data-ar="الشركة: ALTAWOS LTD | رقم الشركة: 17238920">الشركة: ALTAWOS LTD | رقم الشركة: 17238920</span>
-                </p>
-            </div>
-
-            <div class="version-info">
-                <div class="item">
-                    <span class="label" data-en="Version" data-ar="الإصدار">الإصدار</span>
-                    <span class="value">1.0</span>
-                </div>
-                <div class="item">
-                    <span class="label" data-en="Last Updated" data-ar="آخر تحديث">آخر تحديث</span>
-                    <span class="value">May 2026</span>
-                </div>
-                <div class="item">
-                    <span class="label" data-en="Effective Date" data-ar="تاريخ السريان">تاريخ السريان</span>
-                    <span class="value">May 2026</span>
-                </div>
-                <div class="item">
-                    <span class="label" data-en="Compliance" data-ar="الامتثال">الامتثال</span>
-                    <span class="value">GDPR, CCPA, Apple, Google</span>
-                </div>
+                <p class="meta" data-en="Last updated: May 2026" data-ar="آخر تحديث: مايو 2026">آخر تحديث: مايو 2026</p>
             </div>
 
             <!-- Table of Contents -->
             <div class="toc">
                 <h2 data-en="Table of Contents" data-ar="جدول المحتويات">جدول المحتويات</h2>
-                <ol>
-                    <li><a href="#introduction" data-en="Introduction & Scope" data-ar="المقدمة والنطاق">المقدمة والنطاق</a></li>
-                    <li><a href="#permissions" data-en="App Permissions We Request" data-ar="أذونات التطبيقات التي نطلبها">أذونات التطبيقات التي نطلبها</a></li>
-                    <li><a href="#data-collection" data-en="Data We Collect" data-ar="البيانات التي نجمعها">البيانات التي نجمعها</a></li>
-                    <li><a href="#data-use" data-en="How We Use Your Data" data-ar="كيف نستخدم بياناتك">كيف نستخدم بياناتك</a></li>
-                    <li><a href="#data-sharing" data-en="Data Sharing" data-ar="مشاركة البيانات">مشاركة البيانات</a></li>
-                    <li><a href="#data-security" data-en="Data Security" data-ar="أمان البيانات">أمان البيانات</a></li>
-                    <li><a href="#data-retention" data-en="Data Retention" data-ar="الاحتفاظ بالبيانات">الاحتفاظ بالبيانات</a></li>
-                    <li><a href="#your-rights" data-en="Your Rights" data-ar="حقوقك">حقوقك</a></li>
-                    <li><a href="#childrens-privacy" data-en="Children's Privacy" data-ar="خصوصية الأطفال">خصوصية الأطفال</a></li>
-                    <li><a href="#international" data-en="International Transfers" data-ar="النقل الدولي">النقل الدولي</a></li>
-                    <li><a href="#changes" data-en="Policy Changes" data-ar="تغييرات السياسة">تغييرات السياسة</a></li>
-                    <li><a href="#contact" data-en="Contact Us" data-ar="التواصل معنا">التواصل معنا</a></li>
+                <ol class="toc-list">
+                    <li><a href="#information-collection"><span>1.</span> <span data-en="Information We Collect" data-ar="المعلومات التي نجمعها">المعلومات التي نجمعها</span></a></li>
+                    <li><a href="#permissions"><span>2.</span> <span data-en="App Permissions" data-ar="صلاحيات التطبيق">صلاحيات التطبيق</span></a></li>
+                    <li><a href="#data-use"><span>3.</span> <span data-en="How We Use Your Data" data-ar="كيف نستخدم بياناتك">كيف نستخدم بياناتك</span></a></li>
+                    <li><a href="#data-sharing"><span>4.</span> <span data-en="Data Sharing" data-ar="مشاركة البيانات">مشاركة البيانات</span></a></li>
+                    <li><a href="#data-security"><span>5.</span> <span data-en="Data Security" data-ar="أمان البيانات">أمان البيانات</span></a></li>
+                    <li><a href="#data-retention"><span>6.</span> <span data-en="Data Retention" data-ar="الاحتفاظ بالبيانات">الاحتفاظ بالبيانات</span></a></li>
+                    <li><a href="#your-rights"><span>7.</span> <span data-en="Your Rights" data-ar="حقوقك">حقوقك</span></a></li>
+                    <li><a href="#children"><span>8.</span> <span data-en="Children's Privacy" data-ar="خصوصية الأطفال">خصوصية الأطفال</span></a></li>
+                    <li><a href="#third-party"><span>9.</span> <span data-en="Third-Party Services" data-ar="خدمات الأطراف الثالثة">خدمات الأطراف الثالثة</span></a></li>
+                    <li><a href="#changes"><span>10.</span> <span data-en="Policy Changes" data-ar="تغييرات السياسة">تغييرات السياسة</span></a></li>
+                    <li><a href="#contact"><span>11.</span> <span data-en="Contact Us" data-ar="التواصل معنا">التواصل معنا</span></a></li>
                 </ol>
             </div>
 
-            <!-- Section 1: Introduction -->
-            <div class="policy-section" id="introduction">
-                <h2>1. <span data-en="Introduction & Scope" data-ar="المقدمة والنطاق">المقدمة والنطاق</span></h2>
-                <p data-en="ALTAWOS LTD ('Company', 'we', 'us', or 'our') is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile applications ('Apps'), websites, and related services (collectively, the 'Services')." data-ar="شركة الطاووس المحدودة المسؤولية ('الشركة' أو 'نحن') ملتزمة بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا والكشف عن وحماية معلوماتك عند استخدامك لتطبيقاتنا المحمولة ('التطبيقات') ومواقعنا الإلكترونية والخدمات ذات الصلة (collectively، 'الخدمات').">
-                    شركة الطاووس المحدودة المسؤولية ('الشركة' أو 'نحن') ملتزمة بحماية خصوصيتك. توضح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا والكشف عن وحماية معلوماتك عند استخدامك لتطبيقاتنا المحمولة ('التطبيقات') ومواقعنا الإلكترونية والخدمات ذات الصلة (collectively، 'الخدمات').
-                </p>
-                <p data-en="This policy complies with:" data-ar="تتوافق هذه السياسة مع:">تتوافق هذه السياسة مع:</p>
+            <!-- Section 1: Information Collection -->
+            <div class="policy-section" id="information-collection">
+                <h2>1. <span data-en="Information We Collect" data-ar="المعلومات التي نجمعها">المعلومات التي نجمعها</span></h2>
+                <p data-en="We collect the following types of information to provide and improve our services:" data-ar="نجمع أنواع المعلومات التالية لتقديم خدماتنا وتحسينها:">نجمع أنواع المعلومات التالية لتقديم خدماتنا وتحسينها:</p>
                 <ul>
-                    <li data-en="Apple App Store Review Guidelines" data-ar="إرشادات مراجعة متجر Apple">إرشادات مراجعة متجر Apple</li>
-                    <li data-en="Google Play Developer Program Policies" data-ar="سياسات برنامج مطوري Google Play">سياسات برنامج مطوري Google Play</li>
-                    <li data-en="General Data Protection Regulation (GDPR)" data-ar="اللائحة العامة لحماية البيانات (GDPR)">اللائحة العامة لحماية البيانات (GDPR)</li>
-                    <li data-en="California Consumer Privacy Act (CCPA)" data-ar="قانون خصوصية المستهلك في كاليفورنيا (CCPA)">قانون خصوصية المستهلك في كاليفورنيا (CCPA)</li>
+                    <li data-en="<strong>Personal Information:</strong> Name, email address, phone number, delivery address when you register or place an order" data-ar="<strong>المعلومات الشخصية:</strong> الاسم، البريد الإلكتروني، رقم الهاتف، عنوان التوصيل عند التسجيل أو تقديم طلب">المعلومات الشخصية: الاسم، البريد الإلكتروني، رقم الهاتف، عنوان التوصيل عند التسجيل أو تقديم طلب</li>
+                    <li data-en="<strong>Device Information:</strong> Device type, operating system version, unique device identifiers for analytics and crash reporting" data-ar="<strong>معلومات الجهاز:</strong> نوع الجهاز، إصدار نظام التشغيل، معرفات الجهاز الفريدة للتحليلات وإبلاغ الأعطال">معلومات الجهاز: نوع الجهاز، إصدار نظام التشغيل، معرفات الجهاز الفريدة للتحليلات وإبلاغ الأعطال</li>
+                    <li data-en="<strong>Location Data:</strong> GPS coordinates (with your permission) to show nearby stores and enable delivery tracking" data-ar="<strong>بيانات الموقع:</strong> إحداثيات GPS (بإذنك) لعرض المتاجر القريبة وتمكين تتبع التوصيل">بيانات الموقع: إحداثيات GPS (بإذنك) لعرض المتاجر القريبة وتمكين تتبع التوصيل</li>
+                    <li data-en="<strong>Usage Data:</strong> App interactions, search queries, order history to personalize your experience" data-ar="<strong>بيانات الاستخدام:</strong> تفاعلات التطبيق، استعلامات البحث، سجل الطلبات لتخصيص تجربتك">بيانات الاستخدام: تفاعلات التطبيق، استعلامات البحث، سجل الطلبات لتخصيص تجربتك</li>
+                    <li data-en="<strong>Payment Information:</strong> Processed through secure third-party payment providers (Stripe, PayPal). We do not store your card details." data-ar="<strong>معلومات الدفع:</strong> تتم معالجتها عبر مزودي دفع آمنين من الأطراف الثالثة (Stripe, PayPal). لا نخزن تفاصيل بطاقتك.">معلومات الدفع: تتم معالجتها عبر مزودي دفع آمنين من الأطراف الثالثة. لا نخزن تفاصيل بطاقتك.</li>
                 </ul>
-                <div class="highlight-box">
-                    <h4 data-en="Important Notice" data-ar="إشعار هام">إشعار هام</h4>
-                    <p data-en="All permissions requested by our apps are OPTIONAL. You can grant or deny permissions at any time through your device settings. Denying permissions may limit certain app features, but the core functionality will remain available." data-ar="جميع الأذونات التي تطلبها تطبيقاتنا اختيارية. يمكنك منح أو رفض الأذونات في أي وقت من خلال إعدادات جهازك. قد يؤدي رفض الأذونات إلى تقييد ميزات معينة للتطبيق، لكن ستظل الوظائف الأساسية متاحة.">
-                        جميع الأذونات التي تطلبها تطبيقاتنا اختيارية. يمكنك منح أو رفض الأذونات في أي وقت من خلال إعدادات جهازك. قد يؤدي رفض الأذونات إلى تقييد ميزات معينة للتطبيق، لكن ستظل الوظائف الأساسية متاحة.
-                    </p>
-                </div>
             </div>
 
-            <!-- Section 2: Permissions -->
+            <!-- Section 2: App Permissions -->
             <div class="policy-section" id="permissions">
-                <h2>2. <span data-en="App Permissions We Request" data-ar="أذونات التطبيقات التي نطلبها">أذونات التطبيقات التي نطلبها</span></h2>
-                <p data-en="Our apps may request the following permissions. Each permission is explained with its purpose, how we use the data, and your choices:" data-ar="قد تطلب تطبيقاتنا الأذونات التالية. يتم شرح كل إذن مع غرضه وكيفية استخدامنا للبيانات وخياراتك:">قد تطلب تطبيقاتنا الأذونات التالية. يتم شرح كل إذن مع غرضه وكيفية استخدامنا للبيانات وخياراتك:</p>
-
-                <!-- Location Permission -->
-                <div class="permission-card">
-                    <h4>
-                        <span class="icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </span>
-                        <span data-en="Location (GPS) Permission" data-ar="إذن الموقع (GPS)">إذن الموقع (GPS)</span>
-                    </h4>
-                    <div class="detail">
-                        <strong data-en="Why We Need It:" data-ar="لماذا نحتاجه:">لماذا نحتاجه:</strong>
-                        <span data-en="To provide delivery services and location-based features" data-ar="لتوفير خدمات التوصيل وميزات الموقع">لتوفير خدمات التوصيل وميزات الموقع</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="How We Use It:" data-ar="كيفية استخدامه:">كيفية استخدامه:</strong>
-                        <ul>
-                            <li data-en="Calculate distance between customer and delivery address" data-ar="حساب المسافة بين العميل وعنوان التوصيل">حساب المسافة بين العميل وعنوان التوصيل</li>
-                            <li data-en="Track delivery orders in real-time" data-ar="تتبع طلبات التوصيل بشكل مباشر">تتبع طلبات التوصيل بشكل مباشر</li>
-                            <li data-en="Show nearby stores and available services" data-ar="عرض المتاجر القريبة والخدمات المتاحة">عرض المتاجر القريبة والخدمات المتاحة</li>
-                            <li data-en="Optimize delivery routes for drivers" data-ar="تحسين مسارات التوصيل للسائقين">تحسين مسارات التوصيل للسائقين</li>
-                            <li data-en="Enable store pickup options" data-ar="تفعيل خيارات استلام من المتجر">تفعيل خيارات استلام من المتجر</li>
-                        </ul>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Data Type:" data-ar="نوع البيانات:">نوع البيانات:</strong>
-                        <span data-en="Precise GPS location (when app is in foreground) or approximate location" data-ar="الموقع الدقيق عبر GPS (عند استخدام التطبيق) أو الموقع التقريبي">الموقع الدقيق عبر GPS (عند استخدام التطبيق) أو الموقع التقريبي</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Storage:" data-ar="التخزين:">التخزين:</strong>
-                        <span data-en="Stored securely and only retained as long as necessary" data-ar="يتم تخزينها بشكل آمن والاحتفاظ بها فقط طالما هو ضروري">يتم تخزينها بشكل آمن والاحتفاظ بها فقط طالما هو ضروري</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Your Choice:" data-ar="خيارك:">خيارك:</strong>
-                        <span data-en="Grant or deny at any time through device Settings > Privacy > Location Services" data-ar="امنح أو ارفض في أي وقت من خلال إعدادات الجهاز > الخصوصية > خدمات الموقع">امنح أو ارفض في أي وقت من خلال إعدادات الجهاز > الخصوصية > خدمات الموقع</span>
-                    </div>
-                </div>
-
-                <!-- Camera Permission -->
-                <div class="permission-card">
-                    <h4>
-                        <span class="icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                                <circle cx="12" cy="13" r="4"/>
-                            </svg>
-                        </span>
-                        <span data-en="Camera Permission" data-ar="إذن الكاميرا">إذن الكاميرا</span>
-                    </h4>
-                    <div class="detail">
-                        <strong data-en="Why We Need It:" data-ar="لماذا نحتاجه:">لماذا نحتاجه:</strong>
-                        <span data-en="To allow you to capture photos for your profile and content" data-ar="للسماح لك بالتقاط الصور لملفك الشخصي ومحتواك">للسماح لك بالتقاط الصور لملفك الشخصي ومحتواك</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="How We Use It:" data-ar="كيفية استخدامه:">كيفية استخدامه:</strong>
-                        <ul>
-                            <li data-en="Take profile pictures and cover/banner photos" data-ar="التقاط صور الملف الشخصي وصور الغلاف/البنر">التقاط صور الملف الشخصي وصور الغلاف/البنر</li>
-                            <li data-en="Capture product photos for e-commerce listings" data-ar="التقاط صور المنتجات لقوائم التجارة الإلكترونية">التقاط صور المنتجات لقوائم التجارة الإلكترونية</li>
-                            <li data-en="Take photos for customer reviews and ratings" data-ar="التقاط صور لمراجعات العملاء والتقييمات">التقاط صور لمراجعات العملاء والتقييمات</li>
-                            <li data-en="Scan QR codes when applicable" data-ar="مسح رموز QR عند الحاجة">مسح رموز QR عند الحاجة</li>
-                            <li data-en="Verify identity documents if required" data-ar="التحقق من مستندات الهوية إذا لزم الأمر">التحقق من مستندات الهوية إذا لزم الأمر</li>
-                        </ul>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Data Type:" data-ar="نوع البيانات:">نوع البيانات:</strong>
-                        <span data-en="Photos and images you actively capture using the camera" data-ar="الصور التي تلتقطهاactively باستخدام الكاميرا">الصور التي تلتقطها بنشاط باستخدام الكاميرا</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Storage:" data-ar="التخزين:">التخزين:</strong>
-                        <span data-en="Uploaded to our secure servers and deleted upon your request" data-ar="تم رفعها إلى خوادمنا الآمنة وحذفها عند طلبك">تم رفعها إلى خوادمنا الآمنة وحذفها عند طلبك</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Your Choice:" data-ar="خيارك:">خيارك:</strong>
-                        <span data-en="Grant or deny at any time through device Settings > Privacy > Camera" data-ar="امنح أو ارفض في أي وقت من خلال إعدادات الجهاز > الخصوصية > الكاميرا">امنح أو ارفض في أي وقت من خلال إعدادات الجهاز > الخصوصية > الكاميرا</span>
-                    </div>
-                </div>
-
-                <!-- Photo Library Permission -->
-                <div class="permission-card">
-                    <h4>
-                        <span class="icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                                <circle cx="8.5" cy="8.5" r="1.5"/>
-                                <polyline points="21 15 16 10 5 21"/>
-                            </svg>
-                        </span>
-                        <span data-en="Photo Library / Gallery Access" data-ar="إذن مكتبة الصور / المعرض">إذن مكتبة الصور / المعرض</span>
-                    </h4>
-                    <div class="detail">
-                        <strong data-en="Why We Need It:" data-ar="لماذا نحتاجه:">لماذا نحتاجه:</strong>
-                        <span data-en="To allow you to select existing photos from your device" data-ar="للسماح لك بتحديد صور موجودة من جهازك">للسماح لك بتحديد صور موجودة من جهازك</span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="How We Use It:" data-ar="كيفية استخدامه:">كيفية استخدامه:</strong>
-                        <ul>
-                            <li data-en="Select profile pictures from your photo gallery" data-ar="تحديد صور الملف الشخصي من معرض الصور">تحديد صور الملف الشخصي من معرض الصور</li>
-                            <li data-en="Upload product images for online stores" data-ar="رفع صور المنتجات للمتاجر عبر الإنترنت">رفع صور المنتجات للمتاجر عبر الإنترنت</li>
-                            <li data-en="Add images to reviews, comments, and posts" data-ar="إضافة صور للمراجعات والتعليقات والمنشورات">إضافة صور للمراجعات والتعليقات والمنشورات</li>
-                            <li data-en="Set custom banners, covers, or store logos" data-ar="تعيين بنرات مخصصة أو أغلفة أو شعارات متاجر">تعيين بنرات مخصصة أو أغلفة أو شعارات متاجر</li>
-                        </ul>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Important Note:" data-ar="ملاحظة مهمة:">ملاحظة مهمة:</strong>
-                        <span data-en="Our apps do NOT have access to your entire photo library. You select SPECIFIC photos to upload. We cannot view, browse, or access any other photos on your device without your explicit selection." data-ar="تطبيقاتنا ليس لها حق الوصول إلى entire photo library. أنت تحدد صوراً محددة للرفع. لا يمكننا عرض أو تصفح أو الوصول إلى أي صور أخرى على جهازك بدون اختيارك الصريح.">
-                            تطبيقاتنا ليس لها حق الوصول إلى entire photo library. أنت تحدد صوراً محددة للرفع. لا يمكننا عرض أو تصفح أو الوصول إلى أي صور أخرى على جهازك بدون اختيارك الصريح.
-                        </span>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Your Choice:" data-ar="خيارك:">خيارك:</strong>
-                        <span data-en="Grant limited access (only selected photos) or deny at any time" data-ar="امنح وصولاً محدوداً (صور مختارة فقط) أو ارفض في أي وقت">امنح وصولاً محدوداً (صور مختارة فقط) أو ارفض في أي وقت</span>
-                    </div>
-                </div>
-
-                <!-- Notifications -->
-                <div class="permission-card">
-                    <h4>
-                        <span class="icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                            </svg>
-                        </span>
-                        <span data-en="Push Notifications" data-ar="الإشعارات الفورية">الإشعارات الفورية</span>
-                    </h4>
-                    <div class="detail">
-                        <strong data-en="Why We Use It:" data-ar="لماذا نستخدمه:">لماذا نستخدمه:</strong>
-                        <ul>
-                            <li data-en="Order status updates and delivery tracking" data-ar="تحديثات حالة الطلبات وتتبع التوصيل">تحديثات حالة الطلبات وتتبع التوصيل</li>
-                            <li data-en="Promotional offers and deals (with your consent)" data-ar="العروض والصفقات الترويجية (بموافقتك)">العروض والصفقات الترويجية (بموافقتك)</li>
-                            <li data-en="Account security alerts" data-ar="تنبيهات أمان الحساب">تنبيهات أمان الحساب</li>
-                        </ul>
-                    </div>
-                    <div class="detail">
-                        <strong data-en="Your Choice:" data-ar="خيارك:">خيارك:</strong>
-                        <span data-en="Opt in or out at any time through app Settings or device notification settings" data-ar="الاشتراك أو إلغاء الاشتراك في أي وقت من خلال إعدادات التطبيق أو إعدادات إشعارات الجهاز">الاشتراك أو إلغاء الاشتراك في أي وقت من خلال إعدادات التطبيق أو إعدادات إشعارات الجهاز</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Data Collection -->
-            <div class="policy-section" id="data-collection">
-                <h2>3. <span data-en="Data We Collect" data-ar="البيانات التي نجمعها">البيانات التي نجمعها</span></h2>
-                <table class="data-table">
+                <h2>2. <span data-en="App Permissions" data-ar="صلاحيات التطبيق">صلاحيات التطبيق</span></h2>
+                <p data-en="Our apps may request the following permissions:" data-ar="قد تطلب تطبيقاتنا الصلاحيات التالية:">قد تطلب تطبيقاتنا الصلاحيات التالية:</p>
+                <table>
                     <thead>
                         <tr>
-                            <th data-en="Data Type" data-ar="نوع البيانات">نوع البيانات</th>
-                            <th data-en="Examples" data-ar="أمثلة">أمثلة</th>
-                            <th data-en="Collection Method" data-ar="طريقة الجمع">طريقة الجمع</th>
+                            <th data-en="Permission" data-ar="الصلاحية">الصلاحية</th>
+                            <th data-en="Purpose" data-ar="الغرض">الغرض</th>
                             <th data-en="Required" data-ar="مطلوب">مطلوب</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-en="Account Info" data-ar="معلومات الحساب">معلومات الحساب</td>
-                            <td data-en="Name, email, phone, profile photo" data-ar="الاسم، البريد الإلكتروني، الهاتف، صورة الملف">الاسم، البريد الإلكتروني، الهاتف، صورة الملف</td>
-                            <td data-en="Direct input during signup" data-ar="إدخال مباشر عند التسجيل">إدخال مباشر عند التسجيل</td>
-                            <td data-en="Yes" data-ar="نعم">نعم</td>
-                        </tr>
-                        <tr>
                             <td data-en="Location" data-ar="الموقع">الموقع</td>
-                            <td data-en="GPS coordinates, delivery addresses" data-ar="إحداثيات GPS، عناوين التوصيل">إحداثيات GPS، عناوين التوصيل</td>
-                            <td data-en="Device GPS (with permission)" data-ar="GPS الجهاز (بإذن)">GPS الجهاز (بإذن)</td>
+                            <td data-en="Find nearby stores and track deliveries" data-ar="العثور على المتاجر القريبة وتتبع التوصيل">العثور على المتاجر القريبة وتتبع التوصيل</td>
+                            <td data-en="Optional" data-ar="اختياري">اختياري</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Camera" data-ar="الكاميرا">الكاميرا</td>
+                            <td data-en="Scan QR codes, upload profile photos" data-ar="مسح رموز QR، رفع صور الملفات الشخصية">مسح رموز QR، رفع صور الملفات الشخصية</td>
+                            <td data-en="Optional" data-ar="اختياري">اختياري</td>
+                        </tr>
+                        <tr>
+                            <td data-en="Photo Library" data-ar="مكتبة الصور">مكتبة الصور</td>
+                            <td data-en="Select profile pictures or product images" data-ar="اختيار صور الملفات الشخصية أو صور المنتجات">اختيار صور الملفات الشخصية أو صور المنتجات</td>
                             <td data-en="No" data-ar="لا">لا</td>
                         </tr>
                         <tr>
-                            <td data-en="Device Info" data-ar="معلومات الجهاز">معلومات الجهاز</td>
-                            <td data-en="Device type, OS, unique ID, language" data-ar="نوع الجهاز، نظام التشغيل، معرف فريد، اللغة">نوع الجهاز، نظام التشغيل، معرف فريد، اللغة</td>
-                            <td data-en="Automatic collection" data-ar="جمع تلقائي">جمع تلقائي</td>
-                            <td data-en="Yes" data-ar="نعم">نعم</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Usage Data" data-ar="بيانات الاستخدام">بيانات الاستخدام</td>
-                            <td data-en="App features used, crash logs, errors" data-ar="ميزات التطبيق المستخدمة، سجلات الأخطاء">ميزات التطبيق المستخدمة، سجلات الأخطاء</td>
-                            <td data-en="Automatic collection" data-ar="جمع تلقائي">جمع تلقائي</td>
-                            <td data-en="Yes" data-ar="نعم">نعم</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Photos" data-ar="الصور">الصور</td>
-                            <td data-en="Profile pics, product images, reviews" data-ar="صور الملفات، صور المنتجات، المراجعات">صور الملفات، صور المنتجات، المراجعات</td>
-                            <td data-en="User upload (with permission)" data-ar="رفع المستخدم (بإذن)">رفع المستخدم (بإذن)</td>
-                            <td data-en="No" data-ar="لا">لا</td>
-                        </tr>
-                        <tr>
-                            <td data-en="Transaction Data" data-ar="بيانات المعاملات">بيانات المعاملات</td>
-                            <td data-en="Orders, payments, delivery info" data-ar="الطلبات، المدفوعات، معلومات التوصيل">الطلبات، المدفوعات، معلومات التوصيل</td>
-                            <td data-en="Direct input + payment providers" data-ar="إدخال مباشر + مزودي الدفع">إدخال مباشر + مزودي الدفع</td>
-                            <td data-en="Yes" data-ar="نعم">نعم</td>
+                            <td data-en="Notifications" data-ar="الإشعارات">الإشعارات</td>
+                            <td data-en="Order updates and promotional offers" data-ar="تحديثات الطلبات والعروض الترويجية">تحديثات الطلبات والعروض الترويجية</td>
+                            <td data-en="Optional" data-ar="اختياري">اختياري</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Section 4: Data Use -->
+            <!-- Section 3: Data Use -->
             <div class="policy-section" id="data-use">
-                <h2>4. <span data-en="How We Use Your Data" data-ar="كيف نستخدم بياناتك">كيف نستخدم بياناتك</span></h2>
+                <h2>3. <span data-en="How We Use Your Data" data-ar="كيف نستخدم بياناتك">كيف نستخدم بياناتك</span></h2>
                 <p data-en="We use your data for the following purposes:" data-ar="نستخدم بياناتك للأغراض التالية:">نستخدم بياناتك للأغراض التالية:</p>
                 <ul>
-                    <li data-en="<strong>Service Delivery:</strong> Process orders, manage deliveries, and provide customer support" data-ar="<strong>تقديم الخدمات:</strong> معالجة الطلبات، إدارة التوصيل، وتقديم دعم العملاء"><strong>تقديم الخدمات:</strong> معالجة الطلبات، إدارة التوصيل، وتقديم دعم العملاء</li>
-                    <li data-en="<strong>Account Management:</strong> Create and manage your account, authenticate users" data-ar="<strong>إدارة الحسابات:</strong> إنشاء وإدارة حسابك، مصادقة المستخدمين"><strong>إدارة الحسابات:</strong> إنشاء وإدارة حسابك، مصادقة المستخدمين</li>
-                    <li data-en="<strong>Personalization:</strong> Show relevant stores, products, and recommendations based on your location and preferences" data-ar="<strong>التخصيص:</strong> عرض المتاجر والمنتجات والتوصيات ذات الصلة بناءً على موقعك وتفضيلاتك"><strong>التخصيص:</strong> عرض المتاجر والمنتجات والتوصيات ذات الصلة بناءً على موقعك وتفضيلاتك</li>
-                    <li data-en="<strong>Communication:</strong> Send order updates, promotional offers (with consent), and important notices" data-ar="<strong>التواصل:</strong> إرسال تحديثات الطلبات والعروض الترويجية (بموافقة) والإشعارات المهمة"><strong>التواصل:</strong> إرسال تحديثات الطلبات والعروض الترويجية (بموافقة) والإشعارات المهمة</li>
-                    <li data-en="<strong>Security:</strong> Detect fraud, prevent unauthorized access, and protect our users" data-ar="<strong>الأمان:</strong> كشف الاحتيال ومنع الوصول غير المصرح به وحماية مستخدمينا"><strong>الأمان:</strong> كشف الاحتيال ومنع الوصول غير المصرح به وحماية مستخدمينا</li>
-                    <li data-en="<strong>Improvement:</strong> Analyze usage patterns to improve app functionality and user experience" data-ar="<strong>التحسين:</strong> تحليل أنماط الاستخدام لتحسين وظائف التطبيق وتجربة المستخدم"><strong>التحسين:</strong> تحليل أنماط الاستخدام لتحسين وظائف التطبيق وتجربة المستخدم</li>
-                    <li data-en="<strong>Legal Compliance:</strong> Meet regulatory and legal obligations" data-ar="<strong>الامتثال القانوني:</strong> الوفاء بالالتزامات التنظيمية والقانونية"><strong>الامتثال القانوني:</strong> الوفاء بالالتزامات التنظيمية والقانونية</li>
+                    <li data-en="<strong>Service Delivery:</strong> Process orders, manage deliveries, provide customer support" data-ar="<strong>تقديم الخدمات:</strong> معالجة الطلبات، إدارة التوصيل، وتقديم دعم العملاء">تقديم الخدمات: معالجة الطلبات، إدارة التوصيل، وتقديم دعم العملاء</li>
+                    <li data-en="<strong>Account Management:</strong> Create and manage your account, authenticate users" data-ar="<strong>إدارة الحسابات:</strong> إنشاء وإدارة حسابك، مصادقة المستخدمين">إدارة الحسابات: إنشاء وإدارة حسابك، مصادقة المستخدمين</li>
+                    <li data-en="<strong>Personalization:</strong> Show relevant stores, products, and recommendations" data-ar="<strong>التخصيص:</strong> عرض المتاجر والمنتجات والتوصيات ذات الصلة">التخصيص: عرض المتاجر والمنتجات والتوصيات ذات الصلة</li>
+                    <li data-en="<strong>Communication:</strong> Send order updates, promotional offers (with consent), and important notices" data-ar="<strong>التواصل:</strong> إرسال تحديثات الطلبات والعروض الترويجية (بموافقة) والإشعارات المهمة">التواصل: إرسال تحديثات الطلبات والعروض الترويجية (بموافقة) والإشعارات المهمة</li>
+                    <li data-en="<strong>Security:</strong> Detect fraud, prevent unauthorized access, protect our users" data-ar="<strong>الأمان:</strong> كشف الاحتيال ومنع الوصول غير المصرح به وحماية مستخدمينا">الأمان: كشف الاحتيال ومنع الوصول غير المصرح به وحماية مستخدمينا</li>
+                    <li data-en="<strong>Improvement:</strong> Analyze usage patterns to improve app functionality and user experience" data-ar="<strong>التحسين:</strong> تحليل أنماط الاستخدام لتحسين وظائف التطبيق وتجربة المستخدم">التحسين: تحليل أنماط الاستخدام لتحسين وظائف التطبيق وتجربة المستخدم</li>
+                    <li data-en="<strong>Legal Compliance:</strong> Meet regulatory and legal obligations" data-ar="<strong>الامتثال القانوني:</strong> الوفاء بالالتزامات التنظيمية والقانونية">الامتثال القانوني: الوفاء بالالتزامات التنظيمية والقانونية</li>
                 </ul>
             </div>
 
-            <!-- Section 5: Data Sharing -->
+            <!-- Section 4: Data Sharing -->
             <div class="policy-section" id="data-sharing">
-                <h2>5. <span data-en="Data Sharing" data-ar="مشاركة البيانات">مشاركة البيانات</span></h2>
+                <h2>4. <span data-en="Data Sharing" data-ar="مشاركة البيانات">مشاركة البيانات</span></h2>
                 <p data-en="We do NOT sell your personal data. We may share your data in the following circumstances:" data-ar="لا نبيع بياناتك الشخصية. قد نشارك بياناتك في الظروف التالية:">لا نبيع بياناتك الشخصية. قد نشارك بياناتك في الظروف التالية:</p>
                 <ul>
-                    <li data-en="<strong>With Your Consent:</strong> When you explicitly agree to data sharing" data-ar="<strong>بموافقتك:</strong> عندما توافق صراحةً على مشاركة البيانات"><strong>بموافقتك:</strong> عندما توافق صراحةً على مشاركة البيانات</li>
-                    <li data-en="<strong>Service Providers:</strong> Cloud hosting (AWS/Google Cloud), analytics (Firebase), payment processing (Stripe/PayPal)" data-ar="<strong>مزودو الخدمات:</strong> الاستضافة السحابية (AWS/Google Cloud)، التحليلات (Firebase)، معالجة الدفع (Stripe/PayPal)"><strong>مزودو الخدمات:</strong> الاستضافة السحابية (AWS/Google Cloud)، التحليلات (Firebase)، معالجة الدفع (Stripe/PayPal)</li>
-                    <li data-en="<strong>Delivery Partners:</strong> Drivers receive delivery address and contact information only for order fulfillment" data-ar="<strong>شركاء التوصيل:</strong> يتلقى السائقون عنوان التوصيل ومعلومات الاتصال فقط لتنفيذ الطلبات"><strong>شركاء التوصيل:</strong> يتلقى السائقون عنوان التوصيل ومعلومات الاتصال فقط لتنفيذ الطلبات</li>
-                    <li data-en="<strong>Store Owners:</strong> Order details shared only for processing purchases" data-ar="<strong>أصحاب المتاجر:</strong> تفاصيل الطلبات المشتركة فقط لمعالجة المشتريات"><strong>أصحاب المتاجر:</strong> تفاصيل الطلبات المشتركة فقط لمعالجة المشتريات</li>
-                    <li data-en="<strong>Legal Requirements:</strong> When required by law, court order, or government request" data-ar="<strong>المتطلبات القانونية:</strong> عند طلب القانون أو أمر المحكمة أو طلب حكومي"><strong>المتطلبات القانونية:</strong> عند طلب القانون أو أمر المحكمة أو طلب حكومي</li>
-                    <li data-en="<strong>Business Transfer:</strong> In case of merger, acquisition, or sale of company assets" data-ar="<strong>نقل الأعمال:</strong> في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة"><strong>نقل الأعمال:</strong> في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة</li>
+                    <li data-en="<strong>With Your Consent:</strong> When you explicitly agree to data sharing" data-ar="<strong>بموافقتك:</strong> عندما توافق صراحةً على مشاركة البيانات">بموافقتك: عندما توافق صراحةً على مشاركة البيانات</li>
+                    <li data-en="<strong>Service Providers:</strong> Cloud hosting (AWS/Google Cloud), analytics (Firebase), payment processing (Stripe/PayPal)" data-ar="<strong>مزودو الخدمات:</strong> الاستضافة السحابية (AWS/Google Cloud)، التحليلات (Firebase)، معالجة الدفع (Stripe/PayPal)">مزودو الخدمات: الاستضافة السحابية (AWS/Google Cloud)، التحليلات (Firebase)، معالجة الدفع (Stripe/PayPal)</li>
+                    <li data-en="<strong>Delivery Partners:</strong> Drivers receive delivery address and contact information only for order fulfillment" data-ar="<strong>شركاء التوصيل:</strong> يتلقى السائقون عنوان التوصيل ومعلومات الاتصال فقط لتنفيذ الطلبات">شركاء التوصيل: يتلقى السائقون عنوان التوصيل ومعلومات الاتصال فقط لتنفيذ الطلبات</li>
+                    <li data-en="<strong>Legal Requirements:</strong> When required by law, court order, or government request" data-ar="<strong>المتطلبات القانونية:</strong> عند طلب القانون أو أمر المحكمة أو طلب حكومي">المتطلبات القانونية: عند طلب القانون أو أمر المحكمة أو طلب حكومي</li>
+                    <li data-en="<strong>Business Transfer:</strong> In case of merger, acquisition, or sale of company assets" data-ar="<strong>نقل الأعمال:</strong> في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة">نقل الأعمال: في حالة الاندماج أو الاستحواذ أو بيع أصول الشركة</li>
                 </ul>
             </div>
 
-            <!-- Section 6: Data Security -->
+            <!-- Section 5: Data Security -->
             <div class="policy-section" id="data-security">
-                <h2>6. <span data-en="Data Security" data-ar="أمان البيانات">أمان البيانات</span></h2>
-                <p data-en="We implement industry-standard security measures to protect your data:" data-ar="نقوم بتنفيذ تدابير أمان بمعايير الصناعة لحماية بياناتك:">نقوم بتنفيذ تدابير أمان بمعايير الصناعة لحماية بياناتك:</p>
+                <h2>5. <span data-en="Data Security" data-ar="أمان البيانات">أمان البيانات</span></h2>
+                <p data-en="We implement industry-standard security measures to protect your data:" data-ar="نطبق تدابير أمنية قياسية في الصناعة لحماية بياناتك:">نطبق تدابير أمنية قياسية في الصناعة لحماية بياناتك:</p>
                 <ul>
-                    <li data-en="<strong>Encryption:</strong> Data in transit (TLS/SSL) and at rest (AES-256)" data-ar="<strong>التشفير:</strong> البيانات أثناء النقل (TLS/SSL) وفي حالة السكون (AES-256)"><strong>التشفير:</strong> البيانات أثناء النقل (TLS/SSL) وفي حالة السكون (AES-256)</li>
-                    <li data-en="<strong>Access Control:</strong> Strict access controls with role-based permissions" data-ar="<strong>التحكم في الوصول:</strong> ضوابط وصول صارمة مع صلاحيات قائمة على الأدوار"><strong>التحكم في الوصول:</strong> ضوابط وصول صارمة مع صلاحيات قائمة على الأدوار</li>
-                    <li data-en="<strong>Regular Audits:</strong> Periodic security reviews and vulnerability assessments" data-ar="<strong>المراجعات الدورية:</strong> مراجعات أمنية دورية وتقييمات الثغرات"><strong>المراجعات الدورية:</strong> مراجعات أمنية دورية وتقييمات الثغرات</li>
-                    <li data-en="<strong>Secure Infrastructure:</strong> Cloud providers with SOC 2 and ISO 27001 certifications" data-ar="<strong>البنية التحتية الآمنة:</strong> مزودو السحابة بشهادات SOC 2 و ISO 27001"><strong>البنية التحتية الآمنة:</strong> مزودو السحابة بشهادات SOC 2 و ISO 27001</li>
+                    <li data-en="<strong>Encryption:</strong> All data transmitted between your device and our servers is encrypted using TLS 1.3" data-ar="<strong>التشفير:</strong> يتم تشفير جميع البيانات المرسلة بين جهازك وخوادمنا باستخدام TLS 1.3">التشفير: يتم تشفير جميع البيانات المرسلة بين جهازك وخوادمنا باستخدام TLS 1.3</li>
+                    <li data-en="<strong>Secure Storage:</strong> Data at rest is encrypted using AES-256 encryption" data-ar="<strong>التخزين الآمن:</strong> البيانات الثابتة مشفرة باستخدام تشفير AES-256">التخزين الآمن: البيانات الثابتة مشفرة باستخدام تشفير AES-256</li>
+                    <li data-en="<strong>Access Control:</strong> Strict access controls with multi-factor authentication for all employees" data-ar="<strong>التحكم في الوصول:</strong> ضوابط وصول صارمة مع مصادقة متعددة العوامل لجميع الموظفين">التحكم في الوصول: ضوابط وصول صارمة مع مصادقة متعددة العوامل لجميع الموظفين</li>
+                    <li data-en="<strong>Regular Audits:</strong> We conduct regular security audits and penetration testing" data-ar="<strong>المراجعات الدورية:</strong> نجري مراجعات أمنية واختبارات اختراق دورية">المراجعات الدورية: نجري مراجعات أمنية واختبارات اختراق دورية</li>
                 </ul>
             </div>
 
-            <!-- Section 7: Data Retention -->
+            <!-- Section 6: Data Retention -->
             <div class="policy-section" id="data-retention">
-                <h2>7. <span data-en="Data Retention" data-ar="الاحتفاظ بالبيانات">الاحتفاظ بالبيانات</span></h2>
-                <p data-en="We retain your data only as long as necessary for the purposes outlined in this policy:" data-ar="نحتفظ ببياناتك فقط طالما هو ضروري للأغراض الموضحة في هذه السياسة:">نحتفظ ببياناتك فقط طالما هو ضروري للأغراض الموضحة في هذه السياسة:</p>
+                <h2>6. <span data-en="Data Retention" data-ar="الاحتفاظ بالبيانات">الاحتفاظ بالبيانات</span></h2>
+                <p data-en="We retain your data only for as long as necessary to fulfill the purposes outlined in this policy:" data-ar="نحتفظ ببياناتك فقط طالما هو ضروري لتحقيق الأغراض المذكورة في هذه السياسة:">نحتفظ ببياناتك فقط طالما هو ضروري لتحقيق الأغراض المذكورة في هذه السياسة:</p>
                 <ul>
-                    <li data-en="<strong>Account Data:</strong> Retained while account is active + 2 years after deletion" data-ar="<strong>بيانات الحساب:</strong> محفوظة أثناء النشاط + سنتان بعد الحذف"><strong>بيانات الحساب:</strong> محفوظة أثناء النشاط + سنتان بعد الحذف</li>
-                    <li data-en="<strong>Transaction Data:</strong> Retained for 7 years for tax and legal compliance" data-ar="<strong>بيانات المعاملات:</strong> محفوظة لمدة 7 سنوات للامتثال الضريبي والقانوني"><strong>بيانات المعاملات:</strong> محفوظة لمدة 7 سنوات للامتثال الضريبي والقانوني</li>
-                    <li data-en="<strong>Location Data:</strong> Retained only during active delivery sessions" data-ar="<strong>بيانات الموقع:</strong> محفوظة فقط أثناء جلسات التوصيل النشطة"><strong>بيانات الموقع:</strong> محفوظة فقط أثناء جلسات التوصيل النشطة</li>
-                    <li data-en="<strong>Photos:</strong> Deleted upon user request or account deletion" data-ar="<strong>الصور:</strong> محذوفة عند طلب المستخدم أو حذف الحساب"><strong>الصور:</strong> محذوفة عند طلب المستخدم أو حذف الحساب</li>
-                    <li data-en="<strong>Usage Analytics:</strong> Anonymized after 26 months" data-ar="<strong>تحليلات الاستخدام:</strong> مجهولة الهوية بعد 26 شهراً"><strong>تحليلات الاستخدام:</strong> مجهولة الهوية بعد 26 شهراً</li>
+                    <li data-en="<strong>Account Data:</strong> Retained while your account is active plus 2 years after deletion" data-ar="<strong>بيانات الحساب:</strong> محفوظة أثناء نشاط حسابك بالإضافة إلى سنتين بعد الحذف">بيانات الحساب: محفوظة أثناء نشاط حسابك بالإضافة إلى سنتين بعد الحذف</li>
+<li data-en="<strong>Order History:</strong> Retained for 7 years for legal and tax compliance" data-ar="<strong>سجل الطلبات:</strong> محفوظ لمدة 7 سنوات للامتثال القانوني والضريبي">سجل الطلبات: محفوظ لمدة 7 سنوات للامتثال القانوني والضريبي</li>
+                    <li data-en="<strong>Analytics Data:</strong> Anonymized after 26 months" data-ar="<strong>بيانات التحليلات:</strong> مجهولة الهوية بعد 26 شهراً">بيانات التحليلات: مجهولة الهوية بعد 26 شهراً</li>
+                    <li data-en="<strong>Communication Records:</strong> Retained for 3 years" data-ar="<strong>سجلات الاتصال:</strong> محفوظة لمدة 3 سنوات">سجلات الاتصال: محفوظة لمدة 3 سنوات</li>
                 </ul>
             </div>
 
-            <!-- Section 8: Your Rights -->
+            <!-- Section 7: Your Rights -->
             <div class="policy-section" id="your-rights">
-                <h2>8. <span data-en="Your Rights" data-ar="حقوقك">حقوقك</span></h2>
+                <h2>7. <span data-en="Your Rights" data-ar="حقوقك">حقوقك</span></h2>
                 <p data-en="You have the following rights regarding your personal data:" data-ar="لديك الحقوق التالية فيما يتعلق ببياناتك الشخصية:">لديك الحقوق التالية فيما يتعلق ببياناتك الشخصية:</p>
                 <ul>
-                    <li data-en="<strong>Right to Access:</strong> Request a copy of all personal data we hold about you" data-ar="<strong>حق الوصول:</strong> طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك"><strong>حق الوصول:</strong> طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك</li>
-                    <li data-en="<strong>Right to Rectification:</strong> Request correction of inaccurate personal data" data-ar="<strong>حق التصحيح:</strong> طلب تصحيح البيانات الشخصية غير الدقيقة"><strong>حق التصحيح:</strong> طلب تصحيح البيانات الشخصية غير الدقيقة</li>
-                    <li data-en="<strong>Right to Erasure:</strong> Request deletion of your personal data ('Right to be Forgotten')" data-ar="<strong>حق الحذف:</strong> طلب حذف بياناتك الشخصية ('الحق في النسيان')"><strong>حق الحذف:</strong> طلب حذف بياناتك الشخصية ('الحق في النسيان')</li>
-                    <li data-en="<strong>Right to Portability:</strong> Receive your data in a structured, commonly used, machine-readable format" data-ar="<strong>حق النقل:</strong> استلام بياناتك بتنسيق منظم وشائع الاستخدام وقابل للقراءة آلياً"><strong>حق النقل:</strong> استلام بياناتك بتنسيق منظم وشائع الاستخدام وقابل للقراءة آلياً</li>
-                    <li data-en="<strong>Right to Object:</strong> Object to processing of your personal data for specific purposes" data-ar="<strong>حق الاعتراض:</strong> الاعتراض على معالجة بياناتك الشخصية لأغراض محددة"><strong>حق الاعتراض:</strong> الاعتراض على معالجة بياناتك الشخصية لأغراض محددة</li>
-                    <li data-en="<strong>Right to Withdraw Consent:</strong> Withdraw consent at any time where processing is based on consent" data-ar="<strong>حق سحب الموافقة:</strong> سحب الموافقة في أي وقت حيث تستند المعالجة إلى الموافقة"><strong>حق سحب الموافقة:</strong> سحب الموافقة في أي وقت حيث تستند المعالجة إلى الموافقة</li>
-                    <li data-en="<strong>Right to Lodge Complaint:</strong> File a complaint with your local data protection authority" data-ar="<strong>حق التظلم:</strong> تقديم شكوى لدى سلطة حماية البيانات المحلية"><strong>حق التظلم:</strong> تقديم شكوى لدى سلطة حماية البيانات المحلية</li>
+                    <li data-en="<strong>Access:</strong> Request a copy of all personal data we hold about you" data-ar="<strong>الوصول:</strong> طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك">الوصول: طلب نسخة من جميع البيانات الشخصية التي نحتفظ بها عنك</li>
+                    <li data-en="<strong>Correction:</strong> Request correction of inaccurate or incomplete data" data-ar="<strong>التصحيح:</strong> طلب تصحيح البيانات غير الدقيقة أو غير المكتملة">التصحيح: طلب تصحيح البيانات غير الدقيقة أو غير المكتملة</li>
+                    <li data-en="<strong>Deletion:</strong> Request deletion of your data (subject to legal retention requirements)" data-ar="<strong>الحذف:</strong> طلب حذف بياناتك (مع مراعاة متطلبات الاحتفاظ القانونية)">الحذف: طلب حذف بياناتك (مع مراعاة متطلبات الاحتفاظ القانونية)</li>
+                    <li data-en="<strong>Portability:</strong> Receive your data in a machine-readable format" data-ar="<strong>القابلية للنقل:</strong> استلام بياناتك بتنسيق قابل للقراءة آلياً">القابلية للنقل: استلام بياناتك بتنسيق قابل للقراءة آلياً</li>
+                    <li data-en="<strong>Withdraw Consent:</strong> Withdraw consent at any time where processing is based on consent" data-ar="<strong>سحب الموافقة:</strong> سحب الموافقة في أي وقت حيث يكون المعالجة على أساس الموافقة">سحب الموافقة: سحب الموافقة في أي وقت حيث يكون المعالجة على أساس الموافقة</li>
+                    <li data-en="<strong>Object:</strong> Object to processing of your data for marketing purposes" data-ar="<strong>الاعتراض:</strong> الاعتراض على معالجة بياناتك لأغراض التسويق">الاعتراض: الاعتراض على معالجة بياناتك لأغراض التسويق</li>
                 </ul>
-                <p data-en="To exercise any of these rights, contact us at:" data-ar="لممارسة أي من هذه الحقوق، تواصل معنا على:">لممارسة أي من هذه الحقوق، تواصل معنا على:</p>
-                <p><strong>Email:</strong> <a href="mailto:info@altawos.com">info@altawos.com</a><br>
-                    <strong>Support Email:</strong> <a href="mailto:support@altawos.com">support@altawos.com</a><br>
-                    <strong>Phone:</strong> <a href="tel:+447576076705">+44 7576 076705</a></p>
-                <p data-en="We will respond to your request within 30 days." data-ar="سنرد على طلبك خلال 30 يوماً.">سنرد على طلبك خلال 30 يوماً.</p>
+                <p data-en="To exercise any of these rights, please contact us at:" data-ar="لممارسة أي من هذه الحقوق، يرجى التواصل معنا على:">لممارسة أي من هذه الحقوق، يرجى التواصل معنا على:</p>
+                <div class="highlight-box">
+                    <p><strong data-en="Email:" data-ar="البريد الإلكتروني:">البريد الإلكتروني:</strong> <a href="mailto:info@altawos.com">info@altawos.com</a></p>
+                    <p><strong data-en="Phone:" data-ar="الهاتف:">الهاتف:</strong> <a href="tel:+447576076705">+44 7576 076705</a></p>
+                </div>
             </div>
 
-            <!-- Section 9: Children's Privacy -->
-            <div class="policy-section" id="childrens-privacy">
-                <h2>9. <span data-en="Children's Privacy" data-ar="خصوصية الأطفال">خصوصية الأطفال</span></h2>
-                <p data-en="Our services are NOT directed to children under the age of 13 (or 16 in certain jurisdictions such as the European Union)." data-ar="خدماتنا غير موجهة للأطفال دون سن 13 (أو 16 في certain jurisdictions مثل الاتحاد الأوروبي).">
-                    خدماتنا غير موجهة للأطفال دون سن 13 (أو 16 في certain jurisdictions مثل الاتحاد الأوروبي).
-                </p>
+            <!-- Section 8: Children's Privacy -->
+            <div class="policy-section" id="children">
+                <h2>8. <span data-en="Children's Privacy" data-ar="خصوصية الأطفال">خصوصية الأطفال</span></h2>
+                <p data-en="Our services are not directed to children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately at:" data-ar="خدماتنا ليست موجهة للأطفال دون سن 13 عاماً. لا نجمع عن علم معلومات شخصية من الأطفال دون سن 13. إذا كنت تعتقد أننا جمعنا معلومات من طفل دون سن 13، يرجى التواصل معنا فوراً على:">خدماتنا ليست موجهة للأطفال دون سن 13 عاماً. لا نجمع عن علم معلومات شخصية من الأطفال دون سن 13. إذا كنت تعتقد أننا جمعنا معلومات من طفل دون سن 13، يرجى التواصل معنا فوراً على:</p>
+                <p><a href="mailto:info@altawos.com">info@altawos.com</a></p>
+            </div>
+
+            <!-- Section 9: Third-Party Services -->
+            <div class="policy-section" id="third-party">
+                <h2>9. <span data-en="Third-Party Services" data-ar="خدمات الأطراف الثالثة">خدمات الأطراف الثالثة</span></h2>
+                <p data-en="We use the following third-party services that may have access to your data:" data-ar="نستخدم خدمات الأطراف الثالثة التالية التي قد يكون لديها وصول إلى بياناتك:">نستخدم خدمات الأطراف الثالثة التالية التي قد يكون لديها وصول إلى بياناتك:</p>
                 <ul>
-                    <li data-en="We do NOT knowingly collect personal information from children under 13" data-ar="لا نجمع عن علم معلومات شخصية من الأطفال دون 13">لا نجمع عن علم معلومات شخصية من الأطفال دون 13</li>
-                    <li data-en="If you believe a child has provided us with personal data, please contact us immediately" data-ar="إذا كنت تعتقد أن طفلاً قد زودنا ببيانات شخصية، يرجى التواصل معنا فوراً">إذا كنت تعتقد أن طفلاً قد زودنا ببيانات شخصية، يرجى التواصل معنا فوراً</li>
-                    <li data-en="We will promptly delete any such data upon verification" data-ar="سنحذف فوراً أي بيانات من هذا النوع عند التحقق">سنحذف فوراً أي بيانات من هذا النوع عند التحقق</li>
+                    <li data-en="<strong>Firebase (Google):</strong> Analytics and crash reporting" data-ar="<strong>Firebase (Google):</strong> التحليلات وإبلاغ الأعطال">Firebase (Google): التحليلات وإبلاغ الأعطال</li>
+                    <li data-en="<strong>Stripe:</strong> Payment processing for secure transactions" data-ar="<strong>Stripe:</strong> معالجة الدفع للمعاملات الآمنة">Stripe: معالجة الدفع للمعاملات الآمنة</li>
+                    <li data-en="<strong>PayPal:</strong> Alternative payment processing option" data-ar="<strong>PayPal:</strong> خيار بديل لمعالجة الدفع">PayPal: خيار بديل لمعالجة الدفع</li>
+                    <li data-en="<strong>AWS/Google Cloud:</strong> Cloud hosting and data storage" data-ar="<strong>AWS/Google Cloud:</strong> الاستضافة السحابية وتخزين البيانات">AWS/Google Cloud: الاستضافة السحابية وتخزين البيانات</li>
                 </ul>
+                <p data-en="These services have their own privacy policies. We encourage you to review them." data-ar="هذه الخدمات لديها سياسات خصوصية خاصة بها. نشجعك على مراجعتها.">هذه الخدمات لديها سياسات خصوصية خاصة بها. نشجعك على مراجعتها.</p>
             </div>
 
-            <!-- Section 10: International Transfers -->
-            <div class="policy-section" id="international">
-                <h2>10. <span data-en="International Data Transfers" data-ar="النقل الدولي للبيانات">النقل الدولي للبيانات</span></h2>
-                <p data-en="Your data may be transferred to and processed in countries outside your country of residence, including the United Kingdom and United States." data-ar="قد يتم نقل بياناتك ومعالجتها في countries خارج بلد إقامتك، بما في ذلك المملكة المتحدة والولايات المتحدة.">
-                    قد يتم نقل بياناتك ومعالجتها في countries خارج بلد إقامتك، بما في ذلك المملكة المتحدة والولايات المتحدة.
-                </p>
-                <p data-en="When we transfer data internationally, we ensure appropriate safeguards are in place:" data-ar="عند نقل البيانات internationally، نضمن وجود ضمانات مناسبة:">عند نقل البيانات internationally، نضمن وجود ضمانات مناسبة:</p>
-                <ul>
-                    <li data-en="Standard Contractual Clauses (SCCs) approved by the European Commission" data-ar="البنود التعاقدية القياسية (SCCs) المعتمدة من المفوضية الأوروبية">البنود التعاقدية القياسية (SCCs) المعتمدة من المفوضية الأوروبية</li>
-                    <li data-en="Adequacy decisions by relevant data protection authorities" data-ar="قرارات الملاءمة من سلطات حماية البيانات ذات الصلة">قرارات الملاءمة من سلطات حماية البيانات ذات الصلة</li>
-                    <li data-en="Binding Corporate Rules for intra-group transfers" data-ar="قواعد الشركة الملزمة للنقل داخل المجموعة">قواعد الشركة الملزمة للنقل داخل المجموعة</li>
-                </ul>
-            </div>
-
-            <!-- Section 11: Policy Changes -->
+            <!-- Section 10: Policy Changes -->
             <div class="policy-section" id="changes">
-                <h2>11. <span data-en="Policy Changes" data-ar="تغييرات السياسة">تغييرات السياسة</span></h2>
+                <h2>10. <span data-en="Policy Changes" data-ar="تغييرات السياسة">تغييرات السياسة</span></h2>
                 <p data-en="We may update this Privacy Policy from time to time. We will notify you of any material changes through:" data-ar="قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنخطرك بأي تغييرات جوهرية من خلال:">قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنخطرك بأي تغييرات جوهرية من خلال:</p>
                 <ul>
                     <li data-en="In-app notification or alert" data-ar="إشعار أو تنبيه داخل التطبيق">إشعار أو تنبيه داخل التطبيق</li>
                     <li data-en="Email notification to the address associated with your account" data-ar="إشعار بالبريد الإلكتروني على العنوان المرتبط بحسابك">إشعار بالبريد الإلكتروني على العنوان المرتبط بحسابك</li>
-                    <li data-en>Push notification (if you have enabled notifications)" data-ar="إشعار فوري (إذا كنت قد enabled الإشعارات)">إشعار فوري (إذا كنت قد enabled الإشعارات)</li>
+                    <li data-en="Push notification (if you have enabled notifications)" data-ar="إشعار فوري (إذا كنت قد فعّلت الإشعارات)">إشعار فوري (إذا كنت قد فعّلت الإشعارات)</li>
                 </ul>
-                <p data-en="Material changes will take effect 30 days after notification. Your continued use of our services after changes take effect constitutes acceptance of the updated policy." data-ar="ستصبح التغييرات الجوهرية سارية المفعول بعد 30 يوماً من الإشعار. استمرارك في استخدام خدماتنا بعد سريان التغييرات يشكل قبولاً للسياسة المحدثة.">
-                    ستصبح التغييرات الجوهرية سارية المفعول بعد 30 يوماً من الإشعار. استمرارك في استخدام خدماتنا بعد سريان التغييرات يشكل قبولاً للسياسة المحدثة.
-                </p>
+                <p data-en="Material changes will take effect 30 days after notification. Your continued use of our services after changes take effect constitutes acceptance of the updated policy." data-ar="ستصبح التغييرات الجوهرية سارية المفعول بعد 30 يوماً من الإشعار. استمرارك في استخدام خدماتنا بعد سريان التغييرات يشكل قبولاً للسياسة المحدثة.">ستصبح التغييرات الجوهرية سارية المفعول بعد 30 يوماً من الإشعار. استمرارك في استخدام خدماتنا بعد سريان التغييرات يشكل قبولاً للسياسة المحدثة.</p>
             </div>
 
-            <!-- Section 12: Contact -->
+            <!-- Section 11: Contact -->
             <div class="policy-section" id="contact">
-                <h2>12. <span data-en="Contact Us" data-ar="التواصل معنا">التواصل معنا</span></h2>
+                <h2>11. <span data-en="Contact Us" data-ar="التواصل معنا">التواصل معنا</span></h2>
                 <p data-en="If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:" data-ar="إذا كانت لديك أي أسئلة أو مخاوف أو طلبات تتعلق بهذه السياسة أو ممارساتنا للبيانات، يرجى التواصل معنا:">إذا كانت لديك أي أسئلة أو مخاوف أو طلبات تتعلق بهذه السياسة أو ممارساتنا للبيانات، يرجى التواصل معنا:</p>
                 <div class="highlight-box">
-                    <p><strong>Company:</strong> ALTAWOS LTD</p>
-                    <p><strong>Company Number:</strong> 17238920</p>
-                    <p><strong>Email:</strong> <a href="mailto:info@altawos.com">info@altawos.com</a><br>
-                    <strong>Support Email:</strong> <a href="mailto:support@altawos.com">support@altawos.com</a><br>
-                    <strong>Phone:</strong> <a href="tel:+447576076705">+44 7576 076705</a></p>
-                    <p><strong>Address:</strong></p>
+                    <p><strong data-en="Company:" data-ar="الشركة:">الشركة:</strong> ALTAWOS LTD</p>
+                    <p><strong data-en="Company Number:" data-ar="رقم الشركة:">رقم الشركة:</strong> 17238920</p>
+                    <p><strong data-en="Email:" data-ar="البريد الإلكتروني:">البريد الإلكتروني:</strong> <a href="mailto:info@altawos.com">info@altawos.com</a></p>
+                    <p><strong data-en="Support Email:" data-ar="بريد الدعم:">بريد الدعم:</strong> <a href="mailto:support@altawos.com">support@altawos.com</a></p>
+                    <p><strong data-en="Phone:" data-ar="الهاتف:">الهاتف:</strong> <a href="tel:+447576076705">+44 7576 076705</a></p>
+                    <p><strong data-en="Address:" data-ar="العنوان:">العنوان:</strong></p>
                     <p>Unit 9, Skyport Drive Suite IQ7334<br>
                     West Drayton, Middlesex<br>
                     United Kingdom, UB7 0LB</p>
                 </div>
-                <p data-en="For EU/UK data protection inquiries, you may also contact the relevant supervisory authority in your country." data-ar="للاستفسارات المتعلقة بحماية البيانات في EU/UK، يمكنك أيضاً التواصل مع السلطة الإشرافية ذات الصلة في بلدك.">
-                    للاستفسارات المتعلقة بحماية البيانات في EU/UK، يمكنك أيضاً التواصل مع السلطة الإشرافية ذات الصلة في بلدك.
-                </p>
+                <p data-en="For EU/UK data protection inquiries, you may also contact the relevant supervisory authority in your country." data-ar="للاستفسارات المتعلقة بحماية البيانات في الاتحاد الأوروبي/المملكة المتحدة، يمكنك أيضاً التواصل مع السلطة الإشرافية ذات الصلة في بلدك.">للاستفسارات المتعلقة بحماية البيانات في الاتحاد الأوروبي/المملكة المتحدة، يمكنك أيضاً التواصل مع السلطة الإشرافية ذات الصلة في بلدك.</p>
             </div>
 
             <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);">
                 <p style="color: var(--text-muted); font-size: 14px;">
                     &copy; 2026 ALTAWOS LTD. <span data-en="All Rights Reserved." data-ar="جميع الحقوق محفوظة.">جميع الحقوق محفوظة.</span><br>
-                    <span data-en="Registered in England and Wales | Company No. 17238920" data-ar="مسجلة في إنجلترا وويلز | رقم الشركة 17238920">مسجلة في إنجلترا وويلز | رقمالشركة 17238920</span>
+                    <span data-en="Registered in England and Wales | Company No. 17238920" data-ar="مسجلة في إنجلترا وويلز | رقم الشركة 17238920">مسجلة في إنجلترا وويلز | رقم الشركة 17238920</span>
                 </p>
             </div>
         </div>

@@ -45,7 +45,10 @@ function applyLanguage(lang) {
     // Update all text elements with data-ar and data-en attributes
     const elementsWithLang = document.querySelectorAll('[data-ar][data-en]');
     elementsWithLang.forEach(el => {
-        el.textContent = el.getAttribute(`data-${lang}`);
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) {
+            el.innerHTML = text;
+        }
     });
     
     // Update HTML direction-specific elements
@@ -54,7 +57,7 @@ function applyLanguage(lang) {
         const arText = el.getAttribute('data-ar');
         const enText = el.getAttribute('data-en');
         if (arText && enText) {
-            el.textContent = lang === 'ar' ? arText : enText;
+            el.innerHTML = lang === 'ar' ? arText : enText;
         }
     });
     
