@@ -1,0 +1,30 @@
+# robots.txt for ALTAWOS LTD
+# Website: https://altawos.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://altawos.com/sitemap.xml
+
+# Crawl delay (optional, be nice to search engines)
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
