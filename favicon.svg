@@ -1,6 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle cx="16" cy="16" r="15" fill="#1a1a2e"/>
-  <path d="M16 4 C10 12, 7 18, 16 28 C25 18, 22 12, 16 4" fill="#e94560"/>
-  <circle cx="16" cy="15" r="4" fill="#0f3460"/>
-  <circle cx="16" cy="15" r="2" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Hexagon (technology/code) -->
+  <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" fill="none" stroke="url(#grad1)" stroke-width="3"/>
+  
+  <!-- A letter stylized as code brackets -->
+  <text x="32" y="45" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#e94560" text-anchor="middle">&lt;/&gt;</text>
+  
+  <!-- Small dots (nodes/data points) -->
+  <circle cx="15" cy="15" r="3" fill="#0f3460"/>
+  <circle cx="49" cy="15" r="3" fill="#0f3460"/>
+  <circle cx="15" cy="49" r="3" fill="#0f3460"/>
+  <circle cx="49" cy="49" r="3" fill="#0f3460"/>
 </svg>

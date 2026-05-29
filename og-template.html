@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTAWOS LTD - OG Image Template</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #1a1a2e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+        .logo svg {
+            width: 100%;
+            height: 100%;
+        }
+        .company-info {
+            text-align: left;
+        }
+        .company-name {
+            font-size: 64px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+        .company-tagline {
+            font-size: 24px;
+            color: #e94560;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .divider {
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #e94560, transparent);
+            margin: 20px 0;
+        }
+        .services {
+            display: flex;
+            gap: 60px;
+            margin: 30px 0;
+        }
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(233, 69, 96, 0.2);
+            border: 2px solid #e94560;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+        }
+        .service-label {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .website {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 40px;
+            letter-spacing: 3px;
+        }
+        .website span {
+            color: #e94560;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-image">
+        <div class="logo-section">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0f3460;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <polygon points="32,4 56,18 56,46 32,60 8,46 8,18" fill="none" stroke="url(#grad1)" stroke-width="3"/>
+                    <text x="32" y="45" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#e94560" text-anchor="middle">&lt;/&gt;</text>
+                    <circle cx="15" cy="15" r="3" fill="#0f3460"/>
+                    <circle cx="49" cy="15" r="3" fill="#0f3460"/>
+                    <circle cx="15" cy="49" r="3" fill="#0f3460"/>
+                    <circle cx="49" cy="49" r="3" fill="#0f3460"/>
+                </svg>
+            </div>
+            <div class="company-info">
+                <div class="company-name">ALTAWOS LTD</div>
+                <div class="divider"></div>
+                <div class="company-tagline">UK Technology Company</div>
+            </div>
+        </div>
+        
+        <div class="services">
+            <div class="service-item">
+                <div class="service-icon">📱</div>
+                <div class="service-label">Mobile Apps</div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🎮</div>
+                <div class="service-label">Games</div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">💻</div>
+                <div class="service-label">Development</div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🛒</div>
+                <div class="service-label">E-Commerce</div>
+            </div>
+        </div>
+        
+        <div class="website">
+            <span>altawos</span>.com
+        </div>
+    </div>
+</body>
+</html>
